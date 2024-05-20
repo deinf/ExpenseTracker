@@ -3,7 +3,6 @@ import 'dart:math';
 import 'package:expensetracker/data/data.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
@@ -54,8 +53,7 @@ class MainScreen extends StatelessWidget {
                             style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
-                                color:
-                                    Theme.of(context).colorScheme.onBackground),
+                                color: Theme.of(context).colorScheme.onSurface),
                           )
                         ],
                       ),
@@ -210,7 +208,7 @@ class MainScreen extends StatelessWidget {
                     "Transactions",
                     style: TextStyle(
                         fontSize: 16,
-                        color: Theme.of(context).colorScheme.onBackground,
+                        color: Theme.of(context).colorScheme.onSurface,
                         fontWeight: FontWeight.bold),
                   ),
                   GestureDetector(
@@ -266,7 +264,7 @@ class MainScreen extends StatelessWidget {
                                       fontSize: 16,
                                       color: Theme.of(context)
                                           .colorScheme
-                                          .onBackground,
+                                          .onSurface,
                                       fontWeight: FontWeight.w500),
                                 ),
                               ],
@@ -280,7 +278,7 @@ class MainScreen extends StatelessWidget {
                                       fontSize: 14,
                                       color: Theme.of(context)
                                           .colorScheme
-                                          .onBackground,
+                                          .onSurface,
                                       fontWeight: FontWeight.w500),
                                 ),
                                 Text(
