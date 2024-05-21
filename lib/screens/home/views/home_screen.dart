@@ -1,9 +1,13 @@
 import 'dart:math';
 
+import 'package:expense_repository/expense_repository.dart';
+import 'package:expensetracker/screens/add_expense/blocs/create_category_bloc/create_category_bloc.dart';
 import 'package:expensetracker/screens/add_expense/views/add_expense.dart';
 import 'package:expensetracker/screens/home/views/main_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../stats/stats.dart';
 
@@ -37,10 +41,8 @@ class _HomeScreenState extends State<HomeScreen> {
             pageChange(value);
           },
           items: const [
-            BottomNavigationBarItem(
-                icon: Icon(CupertinoIcons.home), label: "Home"),
-            BottomNavigationBarItem(
-                icon: Icon(CupertinoIcons.graph_square_fill), label: "Stats")
+            BottomNavigationBarItem(icon: Icon(CupertinoIcons.home), label: "Home"),
+            BottomNavigationBarItem(icon: Icon(CupertinoIcons.graph_square_fill), label: "Stats")
           ],
         ),
       ),
@@ -50,7 +52,10 @@ class _HomeScreenState extends State<HomeScreen> {
           Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const AddExpense(),
+                builder: (context) => BlocProvider(
+                  create: (context) => CreateCategoryBloc(FirebaseExpenseExpo()),
+                  child: const AddExpense(),
+                ),
               ));
         },
         shape: const CircleBorder(),
@@ -83,7 +88,6 @@ class _HomeScreenState extends State<HomeScreen> {
       index = i;
     });
 
-    pageController.animateToPage(i,
-        duration: const Duration(milliseconds: 200), curve: Curves.linear);
+    pageController.animateToPage(i, duration: const Duration(milliseconds: 200), curve: Curves.linear);
   }
 }
